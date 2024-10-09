@@ -1,0 +1,6 @@
+
+{% if aggregate_routes is defined %}
+{% for route in aggregate_routes %}
+delete routing-options aggregate route {{ route.route }} 
+{% endfor %}
+{% endif %}

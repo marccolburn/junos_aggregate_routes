@@ -1,0 +1,12 @@
+---
+- name: Configure JUNOS Aggregate Routes
+  junos_config:
+    lines: "{{ lookup('template', 'junos_aggregate_routes_config.j2').split('\n') }}"
+    comment: Configure aggregate routes
+  when: aggregate_remove == False
+
+- name: Remove JUNOS Aggregate Routes
+  junos_config:
+    lines: "{{ lookup('template', 'junos_aggregate_routes_remove.j2').split('\n') }}"
+    comment: Remove aggregate routes 
+  when: aggregate_remove == True
